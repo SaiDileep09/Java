@@ -1,0 +1,55 @@
+7) StringTokenizer class, which reads a line of integers 
+and then displays each integer & sum of all integers.
+----------------------------------------------------
+
+import java.util.Scanner;
+import java.util.StringTokenizer;
+public class Sample {
+
+	public static void main(String[] args) {
+		// Use Scanner for input
+		Scanner sc = new Scanner(System.in);
+
+		// Read a line of integers from the user
+		System.out.println("Enter a line of integers separated by spaces : ");
+		String inputLine = sc.nextLine();
+
+		sc.close();
+
+		// Create a StringTokenizer with default delimiters (space, tab, newline, etc.)
+		StringTokenizer tokenizer = new StringTokenizer(inputLine);
+
+		// Display each integer and calculate the sum
+		int sum = 0;
+		while (tokenizer.hasMoreTokens()) {
+			// Convert each token to an integer
+			String token = tokenizer.nextToken();
+			int number = Integer.parseInt(token);
+
+			// Display the integer
+			System.out.println("Integer : " + number);
+
+			// Add the integer to the sum
+			sum += number;
+		}
+
+		// Display the sum of all integers
+		System.out.println("Sum of all integers : " + sum);
+	}
+}
+
+Output
+------
+Enter a line of integers separated by spaces : 
+2 1 3 6 4 5 9 8 7
+Integer : 2
+Integer : 1
+Integer : 3
+Integer : 6
+Integer : 4
+Integer : 5
+Integer : 9
+Integer : 8
+Integer : 7
+Sum of all integers : 45
+

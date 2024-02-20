@@ -1,0 +1,36 @@
+10) Write an applet that displays content of file
+-------------------------------------------------
+
+import java.applet.*;
+import java.awt.*;
+import java.io.*;
+/*
+  <applet code="AppletDemo2" width=500 height=500>
+  </applet>
+*/
+public class AppletDemo2 extends Applet
+{
+	FileReader fr;
+	String content="";
+	public void init()
+	{
+       try
+       {
+		fr=new FileReader("AppletDemo.java");
+		int ch=fr.read();
+		  while(ch!=-1)
+		   {
+			  content=content+(char)ch;
+              ch=fr.read();
+		   }
+       }
+       catch (Exception e)
+       {
+		   System.out.println(e);
+       }
+	}
+	public void paint(Graphics g)
+	{
+		g.drawString(content,20,20);
+	}
+}

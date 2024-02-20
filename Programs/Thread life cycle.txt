@@ -1,0 +1,35 @@
+13) Thread life cycle
+---------------------
+
+class Thread1 extends Thread {
+	public void run() {
+		System.out.println("T1 state before calling the sleep method : " + Thread.currentThread().getState());
+		try {
+			Thread.sleep(3000);
+		} catch (Exception e) {
+		}
+		System.out.println("T1 state after calling the sleep method : " + Thread.currentThread().getState());
+	}
+}
+
+class MainThread {
+	public static void main(String args[]) {
+		Thread1 t1 = new Thread1();
+		System.out.println("T1 state before calling the start method : " + t1.getState());
+		t1.start();
+		System.out.println("T1 state after calling the start method : " + t1.getState());
+		try {
+			t1.join();
+		} catch (Exception e) {
+		}
+		System.out.println("T1 state after calling the join method : " + t1.getState());
+	}
+}
+
+Output
+------
+T1 state before calling the start method : NEW
+T1 state after calling the start method : RUNNABLE
+T1 state before calling the sleep method : RUNNABLE
+T1 state after calling the sleep method : RUNNABLE
+T1 state after calling the join method : TERMINATED
